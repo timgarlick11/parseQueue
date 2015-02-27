@@ -1,10 +1,40 @@
 <DOCTYPE html>
-<html>
+<html ng-app='parseQ'>
 <head>
+	<link rel="stylesheet" type="text/css" href="main.css">
 	<title>ParseQ</title>
 </head>
-<body>
+<body ng-controller='parseController'>
+<div class='userInput'>
+<input ng-model='query' placeholder='what is your question?'>
+<button ng-click='userQuestion()'>Submit</button>
+</div>
+<div>
+
+<div ng-repeat="message in messages | filter:{status: 'red'}"> <!-- you need to use single quotations on one and double on the other you cant do the same thing -->
+{{message.text}}
+<button ng-click='updateStatus(message)'>update</button>
+</div>
+
+<div class='yellow' ng-repeat="message in messages | filter:{status: 'yellow'}">
+
+
+{{message.text}}
+
+</div>
+
+
+
+
+
+
+
+
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+<script src='js/app.js'></script>
+<script src='js/parseController.js'></script>
+<script src='js/parseService.js'></script>
+<script src='js/defaultHeaders.js'></script>
 </body>
 </html>
